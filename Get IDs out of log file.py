@@ -19,6 +19,7 @@ def getIdsOutOfLogFile() -> None:
             qIdsList = getSubstringOutOfStrList(logRowsList, leftSide, rightSide)
 
         with open(f"{filename}.ids.txt", "a+") as file:
+            print(len(qIdsList))
             file.write(','.join(qIdsList))
     except Exception as error:
         print(f"{printer.fail} {error} {printer.end}")

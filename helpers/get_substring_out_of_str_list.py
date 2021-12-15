@@ -1,7 +1,7 @@
 import re
 from helpers import printer
 
-
+# TODO enter string to identify specific type of error and add an option to find the id just by number of integers RGX
 def getSubstringOutOfStrList(logList: list, leftIndicator: str, rightIndicator: str) -> list:
     """
     Searches for the substring at every item from the given list according the indicators
