@@ -1,7 +1,9 @@
 from tkinter.filedialog import askopenfilename
-from helpers import printer
 from helpers.get_substring_out_of_str_list import getSubstringOutOfStrList
-
+import tkinter as tk
+from tkinter import simpledialog
+from helpers import printer
+from datetime import datetime
 
 def getIdsOutOfLogFile() -> None:
     """
@@ -11,11 +13,18 @@ def getIdsOutOfLogFile() -> None:
     File location is the same as the log file location in your computer.
     """
     try:
+        ROOT = tk.Tk()
+        ROOT.withdraw()
+        leftSide = simpledialog.askstring(title="Left delimiter", prompt="Enter the string we need to match that after it "
+                                                               "the id begins (including spaces):")
+        rightSide = simpledialog.askstring(title="Right delimiter", prompt="Enter the string we need to match that before it "
+                                                                "the id ends (including spaces):")
+        dateTimeString = simpledialog.askstring(title="Date and time", prompt="Enter date and time (DD-MM-YYYY HH:MM:SS):")
+        dateTime = datetime.fromisoformat(dateTimeString)
+        print(dateTime)
         filename = askopenfilename()
         with open(filename, 'r') as data:
             logRowsList = data.read().split('\n')
-            leftSide = input(f"Enter the string we need to match that {printer.underLine}after it{printer.end} the id begins (including spaces):")
-            rightSide = input(f"Enter the string we need to match that {printer.underLine}before it{printer.end} the id ends (including spaces):")
             qIdsList = getSubstringOutOfStrList(logRowsList, leftSide, rightSide)
 
         with open(f"{filename}.ids.txt", "a+") as file:
