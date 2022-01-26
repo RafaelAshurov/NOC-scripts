@@ -19,9 +19,9 @@ def getIdsOutOfLogFile() -> None:
                                                                "the id begins (including spaces):")
         rightSide = simpledialog.askstring(title="Right delimiter", prompt="Enter the string we need to match that before it "
                                                                 "the id ends (including spaces):")
-        dateTimeString = simpledialog.askstring(title="Date and time", prompt="Enter date and time (DD-MM-YYYY HH:MM:SS):")
-        dateTime = datetime.fromisoformat(dateTimeString)
-        print(dateTime)
+        # dateTimeString = simpledialog.askstring(title="Date and time", prompt="Enter date and time (YYYY-MM-DD HH:MM:SS):")
+        # dateTime = datetime.fromisoformat(dateTimeString)
+        # print(dateTime)
         filename = askopenfilename()
         with open(filename, 'r') as data:
             logRowsList = data.read().split('\n')
